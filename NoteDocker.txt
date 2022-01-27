@@ -4,7 +4,7 @@
 sudo docker pull ubuntu/mysql
 
 //Create and execute
-sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:8.0-21.10_beta
+sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:latest
 
 //Show log mysql container
 sudo docker logs -f [mysql-container-name]
@@ -14,7 +14,7 @@ sudo docker network create [mysql-network-name]
 sudo docker network connect [mysql-network-name] [mysql-container-name]
 
 //Connect to mysql bash
-sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:8.0-21.10_beta mysql -h[mysql-container-name] -uroot -p
+sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:latest mysql -h[mysql-container-name] -uroot -p
 
 //Stop mysql container
 sudo docker stop [mysql-container-name]

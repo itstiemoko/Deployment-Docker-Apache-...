@@ -1,6 +1,5 @@
 package com.apiodkpointage.apiodkpointage.administrateurs;
 
-import com.apiodkpointage.apiodkpointage.Etat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

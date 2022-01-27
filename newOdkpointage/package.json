@@ -33,12 +33,12 @@
     "print-js": "^1.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
+    "webpack": "^5.67.0",
     "xlsx": "^0.17.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^12.2.13",
-    "@angular/cli": "~12.2.4",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",

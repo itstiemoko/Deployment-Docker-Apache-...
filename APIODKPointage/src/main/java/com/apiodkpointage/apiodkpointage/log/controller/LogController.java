@@ -2,14 +2,12 @@ package com.apiodkpointage.apiodkpointage.log.controller;
 
 import com.apiodkpointage.apiodkpointage.log.Log;
 import com.apiodkpointage.apiodkpointage.log.Service.LogServiceImp;
-import com.apiodkpointage.apiodkpointage.pointages.Pointage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
