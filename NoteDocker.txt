@@ -1,0 +1,56 @@
+#______________Host spring boot mysql on Docker_____________#
+
+//Pull mysql from docker hub
+sudo docker pull ubuntu/mysql
+
+//Create and execute
+sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:8.0-21.10_beta
+
+//Show log mysql container
+sudo docker logs -f [mysql-container-name]
+
+//Create network for connecting with mysql container
+sudo docker network create [mysql-network-name]
+sudo docker network connect [mysql-network-name] [mysql-container-name]
+
+//Connect to mysql bash
+sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:8.0-21.10_beta mysql -h[mysql-container-name] -uroot -p
+
+//Stop mysql container
+sudo docker stop [mysql-container-name]
+
+//Start mysql container
+sudo docker start [mysql-container-name]
+
+//Configure your app properties file
+===> Change localhost to docker ip address
+===> Add mysql username and password
+
+//Configure your Dockerfile
+	FROM openjdk:11
+	EXPOSE 8080
+	ADD target/your_jar_name.jar your_jar_name.jar
+	ENTRYPOINT ["java", "-jar","/your_jar_name.jar"]
+
+//Add jar file name in your pom file balise build
+	<finalName>your_jar_name</finalName>
+	
+//Make jar file
+mvn clean package
+
+//Create docker image
+sudo docker build -t [docker-image-name] .
+
+//Run docker image
+sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --link [mysql-container-name]
+
+
+
+
+#______________Host angular application on Docker_____________#
+
+
+
+
+
+

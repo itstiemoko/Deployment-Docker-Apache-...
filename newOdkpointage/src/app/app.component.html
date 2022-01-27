@@ -1,0 +1,209 @@
+<!-- start header -->
+<div class="page-header navbar navbar-fixed-top" style="background-color: #f3a109;" *ngIf="loginStatus==true">
+    <div class="page-header-inner ">
+        <!-- logo start -->
+        <div class="page-logo" style="background-color: #00000093; color: #000000;">
+            <a href="/accueil">
+                <img alt="" src="../../assets/images/odk_icon.png" width="50px">
+                <span class="logo-default"style=" color: #000000;">ODK</span> </a>
+        </div>
+        <!-- logo end -->
+        <ul class="nav navbar-nav navbar-left in">
+            <li><a href="javascript:;" class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
+        </ul>
+
+
+        <!-- start mobile menu -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+            data-target=".navbar-collapse">
+            <span></span>
+        </a>
+        <!-- end mobile menu -->
+        <!-- start header menu -->
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <!-- start notification dropdown -->
+                <!-- start manage user dropdown -->
+                <li class="dropdown dropdown-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                        data-close-others="true">
+                        <img alt="" class="img-circle " src="assets/img/dp.jpg" />
+                        <span class="username username-hide-on-mobile"> {{loginData?.nom }} {{loginData?.prenom}}
+                        </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default animated jello">
+                        <li *ngIf="userRole == 1 || userRole == 2">
+                            <a href="/profile">
+                                <i class="icon-user"></i> Profile </a>
+                        </li>
+                        
+                        <li *ngIf="userRole == 'APPRENANT'">
+                            <a href="/userProfile">
+                                <i class="icon-user"></i> Profile </a>
+                        </li>
+                        <li>
+                            <a (click)="logOut()">
+                                <i class="icon-logout"></i>Déconnexion</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end manage user dropdown -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<!-- start page container -->
+<div class="page-container mt-4">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container" style="background-color: #000000;">
+        <div class="sidemenu-container navbar-collapse collapse fixed-menu"*ngIf="loginStatus == true">
+            <div id="remove-scroll">
+                <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true"
+                    data-slide-speed="200">
+                    <li class="sidebar-toggler-wrapper hide">
+                        <div class="sidebar-toggler">
+                            <span></span>
+                        </div>
+                    </li>
+                    <li class="sidebar-user-panel">
+                        <div class="user-panel">
+                            <div class="row">
+                                <div class="sidebar-userpic">
+                                    <img src="assets/img/dp.jpg" class="img-responsive" alt="">
+                                </div>
+                            </div>
+                            <div class="profile-usertitle">
+                                <div class="sidebar-userpic-name"> {{loginData?.nom }} {{loginData?.prenom}} </div>
+                                <div class="profile-usertitle-job">{{loginData?.profile?.libelle }}</div>
+                                <div class="profile-usertitle-job">{{loginData?.Type }}</div>
+                            </div>
+                            <div class="sidebar-userpic-btn">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item" *ngIf="userRole == 1" >
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="material-icons">group</i>
+                            <span class="title">Gestion Administrateurs</span>
+                            <span class="arrow"></span>
+
+                        </a>
+                        <ul class="sub-menu ">
+                            <li class="nav-item">
+                                <a href="/addAdmin" class="nav-link ">
+                                    <i class="material-icons">add</i>
+                                    <span class="title">Ajouter Admin</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/listAdmins" class="nav-link ">
+                                    <i class="material-icons">assignment</i>
+                                    <span class="title"> Lister Admin</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item" *ngIf="userRole == 1 || userRole == 2" >
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="material-icons">group</i>
+                            <span class="title">Gestion Utilisateurs</span>
+                            <span class="arrow"></span>
+
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="/addUsers" class="nav-link ">
+                                    <i class="material-icons">add</i>
+                                    <span class="title">Ajouter Utilisateur</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/listUsers" class="nav-link ">
+                                    <i class="material-icons">assignment</i>
+                                    <span class="title"> Lister Utilisateur</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item" *ngIf="userRole == 1 || userRole == 2">
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="material-icons">school</i>
+                            <span class="title">Gestion Promotions</span>
+                            <span class="arrow"></span>
+
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="addPromotion" class="nav-link ">
+                                    <i class="material-icons">add</i>
+                                    <span class="title"> Ajouter Promotion</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="listPromotion" class="nav-link ">
+                                    <i class="material-icons">assignment</i>
+                                    <span class="title"> Lister Promotion</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" *ngIf="userRole == 1 || userRole == 2">
+                        <a href="/listPointage" class="nav-link nav-toggle">
+                            <i class="material-icons">description</i>
+                            <span class="title">Pointage</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="userRole == 1 || userRole == 2">
+                        <a href="/log" class="nav-link nav-toggle">
+                            <i class="material-icons">event</i>
+                            <span class="title">Log</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="userRole == 1 ">
+                        <a href="/corbeille" class="nav-link nav-toggle">
+                            <i class="material-icons">event</i>
+                            <span class="title">Corbeille</span>
+                        </a>
+                    </li>
+                    <!-- Apprenant button -->
+                    <li class="nav-item" *ngIf="userRole == 'APPRENANT'">
+                        <a href="/userSpace" class="nav-link nav-toggle">
+                          <i class="material-icons">description</i>
+                            <span class="title">Mes Pointages</span>
+                        </a>
+                    </li>
+              
+                    <!-- <li class="nav-item" *ngIf="userRole == 'APPRENANT'">
+                        <a href="/groupe" class="nav-link nav-toggle">
+                          <i class="material-icons">group</i>
+                            <span class="title">Groupe</span>
+                        </a>
+                    </li> -->
+                  
+                <li class="nav-item" *ngIf="userRole == 'APPRENANT'">
+                    <a href="userPromotion/{{loginData?.promotion?.id}}" class="nav-link nav-toggle">
+                      <i class="material-icons">school</i>
+                        <span class="title">Ma Promotion</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    <!-- end sidebar menu -->
+    <router-outlet></router-outlet>
+    <!-- end page container -->
+    <!-- start footer -->
+    <div class="page-footer-fixed page-footer" >
+        <div class="page-footer"> 2021 &copy; Orange Digital kalanso  
+        </div>
+    </div>
+    <!-- end footer -->

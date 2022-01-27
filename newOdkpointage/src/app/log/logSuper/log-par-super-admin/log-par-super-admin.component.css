@@ -1,0 +1,7 @@
+.panel-body:hover{
+    background-color: rgb(240, 203, 136);
+}
+h3{
+    font-weight: 700;
+    text-align: center;
+}

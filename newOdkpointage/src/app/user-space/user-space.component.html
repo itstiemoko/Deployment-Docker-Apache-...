@@ -1,0 +1,101 @@
+
+                <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+
+                    <div class="row justify-content-center">
+						<div class="col-lg-3 col-md-6 col-sm-12 col-12">
+							
+							<div class="card">
+								<div class="panel-body">
+									<h3>  Liste par jour</h3>
+                                
+									<input type="date" name="date">
+                                    <button class="button" >Valider</button> <br>
+                                  
+                               
+									<span class="text-small margin-top-10 full-width"></span> </div>
+							</div>
+						</div>
+							<div class="col-lg-3 col-md-6 col-sm-12 col-12">
+								<div class="card ">
+									<div class="panel-body">
+										<h3>Liste par Semaine</h3>
+                                        <input type="date" name="date">
+                                        <button  class="button">Valider</button> <br>
+									
+										<span class="text-small margin-top-10 full-width"></span> </div>
+								</div>
+							</div>
+						</div>
+                                <div class="row">
+						<div class="col-md-12">
+							<div class="card card-box">
+								
+								<div class="card-body ">
+									<div class="row p-b-20">
+										<div class="col-md-6 col-sm-6 col-6">
+											<div class="btn-group">
+												
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-6">
+											<div class="btn-group pull-right">
+												<a class="btn bg-warning  btn-outline dropdown-toggle" data-toggle="dropdown">Exporter
+													<i class="fa fa-angle-down"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li>
+														<a (click)="imprimerPdf()">
+															<i class="fa fa-print"></i> Imprimer </a>
+													</li>
+													
+													<li>
+														<a (click)="exportexcel()">
+															<i class="fa fa-file-excel-o"></i> Exporter en Excel </a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+                                    <div class="card-head">
+									
+                                        <div class="tools">
+                                            <!-- Search form -->
+                                            <div class="md-form mt-0">
+                                                <input class="form-control mr-sm-2" type="text" autocomplete="off" placeholder="Recherche">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="table-scrollable" id="example4">
+                                        <header style="text-align: center;" ><strong>Mes Pointages</strong> </header>
+									<table class="table table-hover table-checkable order-column full-width" >
+										<thead>
+											<tr>
+												
+												<td class="center"> Date jour pointage </td>
+												<td class="center"> Heure d'arriver </td>
+												<td class="center"> Heure de départ </td>
+											</tr>
+										</thead>
+										<tbody >
+											<tr class="odd gradeX" *ngFor="let user of listUser | filter:searchText"  >
+												<td class="center">{{user.date}}</td>
+												<td class="center">{{user.heureArrivee}}</td>
+												<td class="center">{{user.heureDepart}}</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	            <!-- end page content -->
+				</div>
+			</div>
+	            <!-- end page content -->
+           
+
+
+	

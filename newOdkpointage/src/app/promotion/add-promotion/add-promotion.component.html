@@ -1,0 +1,109 @@
+<!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <div class="card-head">
+                            <header>Nouvelle Promotion</header>
+                            <div class="tools">
+                                <!-- <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a> -->
+                                <a class="t-close btn-danger fa fa-times  " href="/listPromotion"></a>
+                                <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                            </div>
+                        </div>
+                        <div class="card-body" id="bar-parent2">
+                            <form  id="form_sample_2" class="form-horizontal" novalidate="novalidate" [formGroup]=" formgroup" (ngSubmit)="ajouterPromotion(formgroup)">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nom">Nom de la Promotion</label>
+                                            <input type="text" class="form-control" id="tel" formControlName="nom"    [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"/>
+                                            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                                <div *ngIf="f.nom.errors.required">le champ nom Promotion est obligatoire</div>
+                                            </div>
+                                        </div>
+                                     </div> 
+                           
+                     </div>
+                 <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="dateDebut">Date de début</label>
+                        <input type="date" class="form-control" formControlName="dateDebut" [ngClass]="{ 'is-invalid': submitted && f.dateDebut.errors }"/>
+                        <div *ngIf="submitted && f.dateDebut.errors" class="invalid-feedback">
+                            <div *ngIf="f.dateDebut.errors.required">Le champ Date de début est obligatoire</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dateFin">Date de Fin</label>
+                            <input type="date" class="form-control" formControlName="dateFin" [ngClass]="{ 'is-invalid': submitted && f.dateFin.errors }"/>
+                            <div *ngIf="submitted && f.dateFin.errors" class="invalid-feedback">
+                                <div *ngIf="f.dateFin.errors.required">Le champ Date de fin est obligatoire</div>
+                            </div>
+                        </div>
+                    </div>        
+                     </div>
+                       <div class="form-row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="horaireDebutJournee">Heure de debut</label>
+                                <input type="time" class="form-control" formControlName="horaireDebutJournee" [ngClass]="{ 'is-invalid': submitted && f.horaireDebutJournee.errors }"/>
+                                <div *ngIf="submitted && f.horaireDebutJournee.errors" class="invalid-feedback">
+                                    <div *ngIf="f.horaireDebutJournee.errors.required">Le champ Heure de reprise est obligatoire</div>
+                                </div>
+                            </div>                                          
+                             </div> 
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="horaireFinJournee">Heure de déscente</label>
+                            <input type="time" class="form-control" formControlName="horaireFinJournee" [ngClass]="{ 'is-invalid': submitted && f.horaireFinJournee.errors }"/>
+                            <div *ngIf="submitted && f.horaireFinJournee.errors" class="invalid-feedback">
+                                <div *ngIf="f.horaireFinJournee.errors.required">Le champ Heure de descente est obligatoire</div>
+                            </div>
+                        </div>
+                     </div>
+                                
+                    </div>
+            
+                       <!-- <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="nombreFemmes">Nombre de Femme</label>
+                    <input type="int" class="form-control" formControlName="nombreFemmes"    [ngClass]="{ 'is-invalid': submitted && f.nombreFemmes.errors }"/>
+                    <div *ngIf="submitted && f.nombreFemmes.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombreFemmes.errors.required">le champ nombre de Femmes est obligatoire</div>
+                    </div>
+                  </div>
+
+                 <div class="form-group col-md-6">
+                    <label for="nombreHommes">Nombre d'Homme</label>
+                    <input type="int" class="form-control" formControlName="nombreHommes"    [ngClass]="{ 'is-invalid': submitted && f.nombreHommes.errors }"/>
+                    <div *ngIf="submitted && f.nombreHommes.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombreHommes.errors.required">le champ nombre d'Homme est obligatoire</div>
+                    </div>
+                  </div>
+                  </div> -->
+            
+             
+            <!-- <input type="hidden" class="form-control" [(ngModel)]= "loginData.id" name="userId"  > -->
+
+            <div class="form-group">
+                <div class="offset-md-3 col-md-9" style="padding: 30px;">
+            
+              
+                     <button type="submit"  class="btn btn-warning mr-5" >Enregistrer</button>
+                     <button type="reset" class="btn btn-danger ms-5">Réinitialiser</button>
+                    </div>
+                    </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- end page content -->

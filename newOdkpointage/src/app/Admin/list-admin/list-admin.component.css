@@ -1,0 +1,5 @@
+@media  print {
+    .etat, .action, .btn-group, .md-form, .head, .page-header-inner, .td, .label {
+        visibility: hidden;
+    }
+}

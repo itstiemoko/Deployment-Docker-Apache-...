@@ -1,0 +1,5 @@
+@media  print {
+    .etat, .action, .col-lg-3, .md-form, .page-header-inner, .head, .td, .col-md-6 {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,57 @@
+     <!-- start page content -->
+     <div class="page-content-wrapper">
+        <div class="page-content">
+                      
+    <!--------------------------------------------- Contener de detail user -------------------------------->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Information de la  {{detailPromotion.nom}}</header>
+                        <div class="tools">
+                            <!-- <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a> -->
+                            <a class="t-close btn-danger fa fa-times " href="/listPromotion"></a>
+                            <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                        </div>
+                    </div>
+                    <div class="card-body ">
+    
+                        <div class="card card-topline-aqua">
+                            <div class="card-body no-padding height-9">
+                        
+                                <div class="profile-usertitle">
+                                    <div class="profile-usertitle-name"> {{detailPromotion.nom}} </div>
+                            
+                                </div>
+                                <ul class="list-group list-group-unbordered" >
+                                    <li class="list-group-item">
+                                        <b>Nom</b> <a class="pull-right">{{detailPromotion.nom}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Date de début</b> <a class="pull-right">{{detailPromotion.dateDebut}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Date de Fin  </b> <a class="pull-right">{{detailPromotion.dateFin}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Heure de début </b> <a class="pull-right">{{detailPromotion.horaireDebutJournee}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Heure de déscente</b> <a class="pull-right">{{detailPromotion.horaireFinJournee}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Nombre de Femme</b> <a class="pull-right">{{detailPromotion.nombreFemmes}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Nombre d'Homme</b> <a class="pull-right">{{detailPromotion.nombreHommes}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Total des Apprenants</b> <a class="pull-right">{{detailPromotion.totalApprenants}}</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            </div>
+     <!-- end page content -->

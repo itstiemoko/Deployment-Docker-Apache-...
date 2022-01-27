@@ -1,0 +1,100 @@
+			<!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card card-box">
+								
+								<div class="card-body ">
+									<div class="row p-b-20">
+										<div class="col-md-6 col-sm-6 col-6">
+											<div class="btn-group">
+												<a href="/addAdmin" id="addRow" class="btn btn-warning">
+													Ajouter  <i class="fa fa-plus"></i>
+												</a>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-6">
+											<div class="btn-group pull-right">
+												<a class="btn btn-warning  btn-outline dropdown-toggle"
+                                                    data-toggle="dropdown">Exporter
+                                                   <i class="fa fa-angle-down"></i>
+                                                </a>
+												<ul class="dropdown-menu pull-right">
+													<li>
+														<a onclick="window.print()">
+															<i class="fa fa-print"></i> Imprimer </a>
+													</li>
+												
+													<li>
+														<a (click)="exportexcel()">
+															<i class="fa fa-file-excel-o"></i> Exporter en Excel </a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+                                    <div class="card-head">
+									
+                                        <div class="tools">
+                                            <!-- Search form -->
+                                            <div class="md-form mt-0">
+                                                <input class="form-control mr-sm-2" type="text"   [(ngModel)]="searchText" autocomplete="off" placeholder="Rechercher">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="table-scrollable" id="example4">
+										<pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                        <header style="text-align: center;" ><strong>Liste des Administrateurs</strong> </header>
+									<table class="table table-hover table-checkable order-column full-width" >
+										<thead>
+											<tr>
+												<th class="center"></th>
+												<th class="center"> Nom </th>
+												<th class="center"> Prénom </th>
+												<th class="center"> Téléphone </th>
+												<th class="center"> Email </th>
+												<th class="center">Profile</th>
+												<th class="etat">Etat</th>
+												<th class="action"> Action </th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let admin of listAdmin | filter:searchText | paginate : {itemsPerPage : 5, currentPage: p}" >
+											<tr class="odd gradeX" *ngIf="admin.supprimer==0" >
+												<td class="user-circle-img">
+														<img src="../../../assets/images/odk_icon.png" width="50px" alt="">
+												</td>
+												<td class="center"><span routerLink="/detailAdmin/{{admin.id}}">{{admin.nom}}</span></td>
+												<td class="center"><span routerLink="/detailAdmin/{{admin.id}}">{{admin.prenom}}</span></td>
+												<td class="center"><span routerLink="/detailAdmin/{{admin.id}}">{{admin.telephone}}</span></td>
+												<td class="center"><span routerLink="/detailAdmin/{{admin.id}}">{{admin.email}}</span></td>
+												<td class="center"><span routerLink="/detailAdmin/{{admin.id}}">{{admin.profile.libelle}}</span></td>
+												<td class="td">
+													<span *ngIf="admin.etat==='ACTIVER'"><img title="ACTIVER" src="../../../assets/images/puissance.png" width="30px" alt=""> </span>
+													<span *ngIf="admin.etat==='DESACTIVER'"><img title="DESACTIVER" src="../../../assets/images/puissance1.png" width="30px" alt=""> </span>
+													
+													</td>
+												<td class="td">
+													<a  class="btn btn-tbl-edit btn-xs" routerLink="/updateAdmin/{{admin.id}}">
+														<i class="fa fa-pencil"></i>
+													</a>
+													<button class="btn btn-tbl-delete btn-xs" (click)="deleteAdmin(admin.id)">
+														<i class="fa fa-trash-o "></i>
+													</button>
+												</td>
+											</tr>
+
+										
+											
+
+											
+										</tbody>
+									</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	            <!-- end page content -->
+				</div>
+			</div> 

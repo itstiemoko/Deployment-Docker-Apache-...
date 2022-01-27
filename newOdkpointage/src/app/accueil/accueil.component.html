@@ -1,0 +1,88 @@
+<div class="page-content-wrapper  mt-3">
+    <div class="page-content">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" *ngIf="userRole == 1">
+                <div class="card" >
+                    <a>
+                        <div class="panel-body">
+                            <h3 routerLink="/listAdmins">Administrateurs</h3>
+                         
+                            <span class="text-small margin-top-10 full-width"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <a>
+                        <div class="panel-body">
+                            <h3 routerLink="/listUsers">Utilisateurs</h3>
+                           
+                            <span class="text-small margin-top-10 full-width"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <a>
+                        <div class="panel-body">
+                            <h3 routerLink="/listPointage">Pointages</h3>
+                           
+                            <span class="text-small margin-top-10 full-width"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card ">
+                    <a>
+                        <div class="panel-body">
+                            <h3 routerLink="/log">Logs</h3>
+                            
+                            <span class="text-small margin-top-10 full-width"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end widget -->
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Statistique</header>
+                        <div class="tools">
+                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                        </div>
+                    </div>
+                    <div class="card-body no-padding height-9">
+                        <div class="row">
+                            <canvas id="bar-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Agenda</header>
+                        <div class="tools">
+                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                        </div>
+                    </div>
+                    <div class="card-body no-padding height-9">
+                        <div class="row">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end page content -->

@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+.ok{
+    background-image : url("assets/images/font.jpg");
+    background-size: cover;
+    width: 100%;
+} 

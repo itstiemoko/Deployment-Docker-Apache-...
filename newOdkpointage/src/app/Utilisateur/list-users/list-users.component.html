@@ -1,0 +1,111 @@
+<!-- start page content -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-box">
+
+					<div class="card-body ">
+						<div class="row p-b-20">
+							<div class="col-md-6 col-sm-6 col-6">
+								<div class="btn-group">
+									<a href="/addUsers" id="addRow" class="btn btn-warning">
+										Ajouter <i class="fa fa-plus"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-6">
+								<div class="btn-group pull-right">
+									<a class="btn btn-warning  btn-outline dropdown-toggle"
+                                                    data-toggle="dropdown">Exporter
+                                                   <i class="fa fa-angle-down"></i>
+                                                </a>
+									<ul class="dropdown-menu pull-right">
+										<li>
+											<a onclick="window.print()">
+												<i class="fa fa-print"></i> Imprimer </a>
+										</li>
+
+										<li>
+											<a (click)="exportexcel()">
+												<i class="fa fa-file-excel-o"></i> Exporter en Excel </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="card-head">
+
+							<div class="tools">
+								<!-- Search form -->
+								<div class="md-form mt-0">
+									<input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText"
+										autocomplete="off" placeholder="Rechercher">
+								</div>
+							</div>
+						</div>
+						<div class="table-scrollable">
+							<pagination-controls (pageChange)="p = $event"></pagination-controls>
+							<header style="text-align: center;">Liste des Utlisateurs</header>
+							<table class="table table-hover table-checkable order-column full-width" id="example4">
+								<thead>
+									<tr>
+										<th class="center"></th>
+										<th class="center"> Nom </th>
+										<th class="center"> Prenom </th>
+										<th class="center"> Email </th>
+										<th class="center"> Téléphone </th>
+										<th class="center"> Type </th>
+										<th class="etat"> Etat </th>
+										<th class="action"> Action </th>
+									</tr>
+								</thead>
+								<tbody *ngFor="let users of listUsers | filter:searchText | paginate : {itemsPerPage : 5, currentPage: p}" >
+									<tr class="odd gradeX" *ngIf= "users.supprimer==0"  >
+									
+										<td class="user-circle-img">
+											<img src="../../../assets/images/odk_icon.png" width="50px" alt="">
+										</td>
+										<td class="center"><span
+												routerLink="/detailUser/{{users.id}}">{{users.nom}}</span></td>
+										<td class="center"><span
+												routerLink="/detailUser/{{users.id}}">{{users.prenom}}</span></td>
+										<td class="center">{{users.email}}</td>
+										<td class="center"><span
+												routerLink="/detailUser/{{users.id}}">{{users.telephone}}</span></td>
+										<td class="center"> <span
+												routerLink="/detailUser/{{users.id}}">{{users.Type}}</span></td>
+												<td class="td">
+													<span *ngIf="users.etat==='ACTIVER'"><img title="ACTIVER" src="../../../assets/images/puissance.png" width="30px" alt=""> </span>
+													<span *ngIf="users.etat==='DESACTIVER'"><img title="DESACTIVER" src="../../../assets/images/puissance1.png" width="30px" alt=""> </span>
+													
+													</td>
+										<td class="td">
+											<a class="btn btn-tbl-edit btn-xs" routerLink="/updateUser/{{users.id}}">
+												<i class="fa fa-pencil"></i>
+											</a>
+											<button class="btn btn-tbl-delete btn-xs" (click)="deleteUser(users.id)">
+												<i class="fa fa-trash-o "></i>
+											</button>
+										</td>
+									</tr>
+									
+									<script>
+										function printContent(el) {
+											var restorepage = document.body.innerHTML;
+											var printcontent = document.getElementById(el).innerHTML;
+											document.body.innerHTML = printcontent;
+											window.print();
+											document.body.innerHTML = restorepage;
+										}
+									</script>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- end page content -->

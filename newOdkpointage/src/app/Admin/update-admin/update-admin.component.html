@@ -1,0 +1,111 @@
+   <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <div class="card-head">
+                            <header>Modifier Administrateur</header>
+                                <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--bottom-right"></div><ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events" data-mdl-for="panel-button2" data-upgraded=",MaterialMenu,MaterialRipple">
+                                   <li class="mdl-menu__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple"><i class="material-icons">assistant_photo</i>Action<span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li>
+                                   <li class="mdl-menu__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple"><i class="material-icons">print</i>Another action<span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li>
+                                   <li class="mdl-menu__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple"><i class="material-icons">favorite</i>Something else here<span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li>
+                                </ul></div>
+                        </div>
+                        <div class="card-body" id="bar-parent2">
+                            <form  id="form_sample_2" class="form-horizontal" novalidate="novalidate" #editForm="ngForm">
+                                <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" class="form-control" name="prenom" [(ngModel)]="adminData.prenom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="nom">Nom</label>
+                                <input type="text" class="form-control" name="nom" [(ngModel)]="adminData.nom">
+                            </div>
+                     </div>
+                 <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" [(ngModel)]="adminData.email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" class="form-control" name="adresse" [(ngModel)]="adminData.adresse">
+                        </div>                                          
+                         </div>         
+                       </div>
+                       <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="profile">Profile</label><br>
+                            <select id="inputStat" style="padding-right: 455px; padding-bottom: 10px; border-color: darkgrey;" name="profile" [(ngModel)]="adminData.profile.id">
+                                <option></option>
+                                <option value="1">SuperAdmin</option>
+                                <option value="2">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" class="form-control" id="tel" name="telephone" [(ngModel)]="adminData.telephone">
+                        </div>
+                     </div>            
+                       </div>
+            
+                       <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control"  name="login" [(ngModel)]="adminData.login">
+                  </div>
+                 <div class="form-group col-md-6">
+                    <label for="password">Mot de passe</label>
+                    <input type="text" class="form-control"  name="password" [(ngModel)]="adminData.motDePass">
+                  </div>
+                  </div>
+            
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="genre">Genre</label><br>
+                        <select id="inputStat" style="padding-right: 488px; padding-bottom: 10px;  border-color: darkgrey;" [(ngModel)]="adminData.genre" name="genre">
+                            <option></option>
+                            <option value="HOMME">Homme</option>
+                            <option value="FEMME">Femme</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="etat">Etat</label><br>
+                        <select id="inputState" style="padding-right: 468px; padding-bottom: 10px;  border-color: darkgrey;" name="etat" [(ngModel)]="adminData.etat">
+                            <option></option>
+                            <option value="ACTIVER">Activer</option>
+                            <option value="DESACTIVER">Désactiver</option>
+                        </select>
+                    </div>
+                </div>
+              
+            </div>
+            <input type="hidden" class="form-control" [(ngModel)]= "loginData.id" name="userId"  >
+ 
+            <div class="form-group">
+                <div class="offset-md-3 col-md-9" style="padding: 30px;">
+              
+                     <button type="submit" class="btn btn-warning me-5" (click)="onUpdate()">Enregistrer</button>
+                     <button type="reset" class="btn btn-danger ms-5" routerLink="/listAdmins">Retour</button>
+
+                    </div>
+                    </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- end page content -->

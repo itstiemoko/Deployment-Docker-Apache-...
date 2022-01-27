@@ -1,0 +1,134 @@
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-box">
+
+                    <div class="card-body ">
+     
+                        <div class="card-head">
+
+                            <div class="tools">
+                                <!-- Search form -->
+                                <div class="md-form mt-0">
+                                    <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText"
+                                        autocomplete="off" placeholder="Rechercher">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-scrollable" id="example4">
+                            <header style="text-align: center;"><strong>Administrateurs</strong> </header>
+                            <table class="table table-hover table-checkable order-column full-width">
+                                <thead>
+                                    <tr>
+                                        <th class="center"></th>
+                                        <th class="center"> Nom </th>
+                                        <th class="center"> Prénom </th>
+                                        <th class="center"> Téléphone </th>
+                                        <th class="center">Profile</th>
+                                        <th class="action"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let admin of listAdmin | filter:searchText">
+                                    <tr class="odd gradeX" *ngIf="admin.supprimer==1">
+                                        <td class="user-circle-img">
+                                            <img src="../../../assets/images/odk_icon.png" width="50px" alt="">
+                                        </td>
+                                        <td class="center">{{admin.nom}}</td>
+                                        <td class="center">{{admin.prenom}}</td>
+                                        <td class="center">{{admin.telephone}}</td>
+                                        <td class="center">{{admin.profile.libelle}}</td>
+                                        <td class="td">
+                                            <button class="btn btn-tbl-delete btn-xs" (click)="restoreAdmin(admin.id)">
+                                                <i class="fas fa-trash-restore"></i>
+
+                                            </button>
+                                        </td>
+                                    </tr>
+
+
+                                    <script>
+                                        function printContent(el) {
+                                            var restorepage = document.body.innerHTML;
+                                            var printcontent = document.getElementById(el).innerHTML;
+                                            document.body.innerHTML = printcontent;
+                                            window.print();
+                                            document.body.innerHTML = restorepage;
+                                        }
+                                    </script>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-box">
+
+                    <div class="card-body ">
+     
+                        <div class="card-head">
+
+                            <div class="tools">
+                                <!-- Search form -->
+                                <div class="md-form mt-0">
+                                    <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText"
+                                        autocomplete="off" placeholder="Rechercher">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-scrollable" id="example4">
+                            <header style="text-align: center;"><strong>Utilisateurs </strong> </header>
+                            <table class="table table-hover table-checkable order-column full-width">
+                                <thead>
+                                    <tr>
+                                        <th class="center"></th>
+                                        <th class="center"> Nom </th>
+                                        <th class="center"> Prénom </th>
+                                        <th class="center"> Téléphone </th>
+                                        <th class="center">Profile</th>
+                                        <th class="action"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let user of listUsers | filter:searchText">
+                                    <tr class="odd gradeX" *ngIf="user.supprimer==1">
+                                        <td class="user-circle-img">
+                                            <img src="../../../assets/images/odk_icon.png" width="50px" alt="">
+                                        </td>
+                                        <td class="center">{{user.nom}}</td>
+                                        <td class="center">{{user.prenom}}</td>
+                                        <td class="center">{{user.telephone}}</td>
+                                        <td class="center">{{user.Type}}</td>
+                                        <td class="td">
+                                            <button class="btn btn-tbl-delete btn-xs" (click)="restoreUser(user.id)">
+                                                <i class="fas fa-trash-restore"></i>
+
+                                            </button>
+                                        </td>
+                                    </tr>
+
+
+                                    <script>
+                                        function printContent(el) {
+                                            var restorepage = document.body.innerHTML;
+                                            var printcontent = document.getElementById(el).innerHTML;
+                                            document.body.innerHTML = printcontent;
+                                            window.print();
+                                            document.body.innerHTML = restorepage;
+                                        }
+                                    </script>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page content -->
+    </div>
+</div>

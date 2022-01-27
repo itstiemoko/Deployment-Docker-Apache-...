@@ -1,0 +1,123 @@
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="panel-body">
+                        <h3 routerLink="/log">Liste des logs</h3>
+                        
+                        <span class="text-small margin-top-10 full-width"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="panel-body">
+                        <h3 routerLink="/logSuper">Par SuperAdmin</h3>
+                       
+                        <span class="text-small margin-top-10 full-width"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card ">
+                    <div class="panel-body">
+                        <h3 routerLink="/logUtilisateur">Par Utilisateur</h3>
+                       
+                        <span class="text-small margin-top-10 full-width"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Liste des Logs Admin</header>
+                        <div class="tools">
+                            <!-- Search form -->
+                            <div class="md-form mt-0">
+                                <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText"
+                                    autocomplete="off" placeholder="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <div class="row p-b-20">
+                            <div class="col-md-6 col-sm-6 col-6">
+
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="btn-group pull-right">
+                                    <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                                        data-toggle="dropdown">Exporter
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a (click)="imprimerPdf()">
+                                                <i class="fa fa-print"></i> Imprimer </a>
+                                        </li>
+                                        <li>
+                                            <a (click)="downloadPdf()">
+                                                <i class="fa fa-file-pdf-o"></i> Exporter en PDF </a>
+                                        </li>
+                                        <li>
+                                            <a (click)="exportexcel()">
+                                                <i class="fa fa-file-excel-o"></i> Exporter en Excel </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="table-scrollable">
+                            <table class="table table-hover table-checkable order-column full-width" id="example4">
+                                <thead>
+                                    <tr>
+                                        <th class="center"></th>
+                                        <th class="center"> Type Acteur </th>
+                                        <th class="center"> Action </th>
+                                        <th class="center"> Date </th>
+                                        <th class="center"> Heure </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="odd gradeX" *ngFor="let log Of logAdmin |  filter:searchText">
+
+                                        <td class="user-circle-img"><a>
+                                                <img src="../../../assets/images/odk_icon.png" width="50px" alt="">
+                                            </a></td>
+                                        <td class="center">
+                                            <a>{{log.typeActeur}}</a>
+                                        </td>
+                                        <td class="center">
+                                            <a>{{log.action}}</a>
+                                        </td>
+                                        <td class="center">
+                                            <a>{{log.date}}</a>
+                                        </td>
+                                        <td class="center">
+                                            <a>{{log.heure}}
+                                            </a>
+                                        </td>
+                                        <td class="center">
+                                            <!-- <a class="btn btn-tbl-edit btn-xs" routerLink="/updatePromo/{{promo.id}}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            
+                            <button class="btn btn-tbl-delete btn-xs" (click)="deletepromo(promo.id)">
+                                <i class="fa fa-trash-o "></i>
+                            </button> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

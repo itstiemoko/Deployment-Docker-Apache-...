@@ -1,0 +1,13 @@
+.card:hover{
+    cursor: pointer;
+    }
+    input{
+        width: 130px;
+
+    }
+    .button{
+        margin-left: 10px;
+    }
+    .panel-body:hover{
+        background-color: rgb(246, 212, 149);
+    }

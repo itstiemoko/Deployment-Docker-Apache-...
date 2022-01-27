@@ -1,0 +1,23 @@
+    <div id="all">
+    <div class="row md-5">
+       
+  
+    </div>
+    <div id="box" class="row md-4">
+        <h1>Bienvenue</h1>
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" novalidate autocomplete="nope" >
+        <div class="log">
+            <input type="text" placeholder="Veuillez saisir votre Login" name="username" ngModel required autocomplete="off" >
+        </div>
+
+        <div class="pass">
+            <input type="password" placeholder="Veuillez saisir votre mot de passe" name="password" ngModel required>
+        </div>
+     
+        <div>
+        <button class="button" type='submit' value="sign in">Connexion</button>
+        </div>
+        </form>
+    </div>
+     
+   </div>
