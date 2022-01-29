@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  mysql-docker:
+  mysql-docker-compose:
     image: ubuntu/mysql
     restart: always
     environment:
@@ -15,12 +15,14 @@ services:
   
   backend-container:
     build: ./APIODKPointage
-    port: 8000:8080
+    ports:
+      - 8000:8080
     depends_on:
-      - mysql-docker
+      - mysql-docker-compose
   
   frontend-container:
-    build: ./newOdkPointage
-    port: 9000:80
+    build: ./newOdkpointage
+    ports:
+      - 9000:80
     depends_on:
       - backend-container

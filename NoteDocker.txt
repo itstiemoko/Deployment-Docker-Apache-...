@@ -16,6 +16,10 @@ sudo docker network connect [mysql-network-name] [mysql-container-name]
 //Connect to mysql bash
 sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:latest mysql -h[mysql-container-name] -uroot -p
 
+//Another way to connect to mysql bash
+sudo docker exec -it [mysql-container-name] bash
+	mysql -u root -p
+
 //Stop mysql container
 sudo docker stop [mysql-container-name]
 
@@ -47,7 +51,13 @@ sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --li
 
 
 
-#______________Host angular application on Docker_____________#
+#______________Host many docker container on Docker-compose_____________#
+
+//Build and Run docker-copmose
+sudo docker-compose up --build
+
+//Run docker-compose
+sudo docker-compose up
 
 
 
