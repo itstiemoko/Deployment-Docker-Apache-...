@@ -53,6 +53,48 @@ sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --li
 
 #______________Host many docker container on Docker-compose_____________#
 
+//Exemple of docker compose file
+version: '3.3'
+services:
+  #MYSQL SERVER Config
+  mysql-gescabinet-db:
+    image: ubuntu/mysql
+    restart: always
+    environment:
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '30306:3306'
+    #xpose:
+      # Opens port 30306 on the container
+      - '30306'
+    networks:
+      - monnet  
+  #GesCabinet Backend Config
+  back-gescabinet-container:
+    build: ./apigescab
+    ports:
+      - 8000:8080
+    depends_on:
+      - mysql-gescabinet-db
+    networks:
+      - monnet
+
+  #GesCabinet frontend Config
+  front-gescabinet-container:
+    build: ./FrontEnd
+    ports:
+      - 8001:80
+    depends_on:
+      - back-gescabinet-container
+    networks:
+      - monnet
+      
+networks:
+  monnet:
+
+
 //Build and Run docker-copmose
 sudo docker-compose up --build
 
