@@ -73,6 +73,7 @@ services:
       - monnet  
   #GesCabinet Backend Config
   back-gescabinet-container:
+    #Path to your backend project
     build: ./apigescab
     ports:
       - 8000:8080
@@ -83,6 +84,7 @@ services:
 
   #GesCabinet frontend Config
   front-gescabinet-container:
+    #Path to your frontend project
     build: ./FrontEnd
     ports:
       - 8001:80
