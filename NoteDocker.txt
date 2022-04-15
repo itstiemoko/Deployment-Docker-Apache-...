@@ -74,7 +74,7 @@ services:
   #GesCabinet Backend Config
   back-gescabinet-container:
     #Path to your backend project
-    build: ./apigescab
+    build: ./apigescab	#Docker file must be in this folder
     ports:
       - 8000:8080
     depends_on:
@@ -85,7 +85,7 @@ services:
   #GesCabinet frontend Config
   front-gescabinet-container:
     #Path to your frontend project
-    build: ./FrontEnd
+    build: ./FrontEnd	#Docker file must be in this folder
     ports:
       - 8001:80
     depends_on:
