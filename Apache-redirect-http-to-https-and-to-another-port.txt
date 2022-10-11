@@ -1,0 +1,54 @@
+######################### Linux Install Apache #########################
+apt-get install apache2
+
+########################## Configuration File ##########################
+In your /etc/apache2/sites-available, create another config like <filename.conf> and put the bellow config :
+<VirtualHost *:80>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R=301,L]
+    RewriteCond %{SERVER_NAME} =www.domaine-name.com [OR]
+    RewriteCond %{SERVER_NAME} =domaine-name.com
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+<VirtualHost *:443>
+    DocumentRoot /var/www/html
+    ServerName domaine-name.com
+    ServerAlias www.domaine-name.com
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+
+    ############## This section will be automatically generate by CertBot ##############
+    SSLCertificateFile /etc/letsencrypt/live/domaine-name.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/domaine-name.com/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+
+################# Now let's install CertBot and Generate an SSL Certificate #################
+Certbot is a free, open source software tool for automatically using Let's Encrypt certificates on manually-administrated websites to enable HTTPS. Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.
+
+Let’s Encrypt is a Certificate Authority (CA) that facilitates obtaining and installing free TLS/SSL certificates, thereby enabling encrypted HTTPS on web servers. It simplifies the process by providing a software client, Certbot, that attempts to automate most (if not all) of the required steps. Currently, the entire process of obtaining and installing a certificate is fully automated on both Apache and Nginx.
+
+===> sudo apt install certbot python3-certbot-apache
+
+===> sudo a2enmod proxy && sudo a2enmod proxy_http && sudo service apache2 restart (to enable proxy and restart apache)
+
+Make sure HTTPS traffic is allow to your host machine
+
+Certbot provides a variety of ways to obtain SSL certificates through plugins. The Apache plugin will take care of reconfiguring Apache and reloading the configuration whenever necessary. To use this plugin, type the following:
+
+===> sudo certbot --apache
+
+===> sudo service apache2 restart
+
+and there we go ! We can test our domaine in https://domaine-name.com
+
+################# Verifying Certbot Auto-Renewal #################
+Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process, as well as to ensure that misused certificates or stolen keys will expire sooner rather than later.
+
+The certbot package we installed takes care of renewals by including a renew script to /etc/cron.d, which is managed by a systemctl service called certbot.timer. This script runs twice a day and will automatically renew any certificate that’s within thirty days of expiration.
+
+To check the status of this service and make sure it’s active and running, you can use:
+===> sudo systemctl status certbot.timer
+
+See more here : https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-20-04
