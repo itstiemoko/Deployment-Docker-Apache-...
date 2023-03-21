@@ -1,1 +1,8 @@
+######################### How to create a background service in linux #########################
+
+It is (in general) no longer necessary to create bash files to manage the service, 
+systemd takes care of everything (launch, stop, restart, status, log management, etc.)
+
+These configuration files are located in /etc/systemd/system/ and make it possible to indicate the conditions for activating or deactivating a service, their owner, etc. 
+
 
