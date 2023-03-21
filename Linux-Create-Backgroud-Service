@@ -7,6 +7,6 @@ These configuration files are located in /etc/systemd/system/ and make it possib
 the conditions for activating or deactivating a service, their owner, etc. 
 
 Since this folder is essential for the proper functioning of your system, it is advisable to make a backup of it before any file modification.
-In a terminal enter:
+In a terminal enter :
 
-    ```dyfdyfhgdfhg```
+    sudo cp -r /etc/systemd/system /etc/systemd/system.save$(date +%Y%m%d)
