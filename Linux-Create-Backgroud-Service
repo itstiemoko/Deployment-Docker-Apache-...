@@ -11,10 +11,10 @@ In a terminal enter :
 
     sudo cp -r /etc/systemd/system /etc/systemd/system.save$(date +%Y%m%d)
 
-#Now create a service in system folder :
+Now create a service in system folder :
     sudo nano /etc/systemd/system/serviceName.service
 
-#The content will be :
+The content will be :
     [Unit]
     Description=Some description of the service
     After=mysql.target (Which service will be start before this)
@@ -27,7 +27,7 @@ In a terminal enter :
     [Install]
     WantedBy=multi-user.target
 
-#Now we can start the service :
+Now we can start the service :
     sudo service serviceName start
     sudo service serviceName status
     sudo service serviceName restart
