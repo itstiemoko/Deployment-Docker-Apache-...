@@ -1,4 +1,4 @@
-######################### How to create a background service in linux #########################
+######################### How to create a background service on ubuntu #########################
 
 It is (in general) no longer necessary to create bash files to manage the service, 
 systemd takes care of everything (launch, stop, restart, status, log management, etc.)
