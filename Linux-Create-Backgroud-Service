@@ -31,3 +31,6 @@ Now we can start the service :
     sudo service serviceName start
     sudo service serviceName status
     sudo service serviceName restart
+
+
+For more info, check this website : https://doc.ubuntu-fr.org/creer_un_service_avec_systemd
