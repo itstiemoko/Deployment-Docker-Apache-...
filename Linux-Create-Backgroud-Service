@@ -10,3 +10,24 @@ Since this folder is essential for the proper functioning of your system, it is 
 In a terminal enter :
 
     sudo cp -r /etc/systemd/system /etc/systemd/system.save$(date +%Y%m%d)
+
+#Now create a service in system folder :
+    sudo nano /etc/systemd/system/serviceName.service
+
+#The content will be :
+    [Unit]
+    Description=Some description of the service
+    After=mysql.target (Which service will be start before this)
+
+
+    [Service]
+    ExecStart=Command to be execute on service start
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+
+#Now we can start the service :
+    sudo service serviceName start
+    sudo service serviceName status
+    sudo service serviceName restart
