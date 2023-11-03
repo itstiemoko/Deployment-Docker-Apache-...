@@ -2,8 +2,7 @@
 
 ## Host spring boot mysql on Docker
 
-``Pull mysql from docker hub``
-sudo docker pull ubuntu/mysql
+### Pull mysql from docker hub : $sudo docker pull ubuntu/mysql
 
 //Create and execute
 sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:latest
