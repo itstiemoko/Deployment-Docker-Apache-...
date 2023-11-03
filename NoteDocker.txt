@@ -48,6 +48,11 @@ sudo docker build -t [docker-image-name] .
 //Run docker image
 sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --link [mysql-container-name]
 
+//Push an image to docker hub
+//Before create a repo in docker hub
+sudo docker tag local-image:tagname docker-hub-username-username/repo-name:tagname
+sudo docker push docker-hub-username-username/repo-name:tagname
+
 
 
 
