@@ -1,1 +1,111 @@
 # Deployment Docker, Apache Config
+
+#______________Host spring boot mysql on Docker_____________#
+
+//Pull mysql from docker hub
+sudo docker pull ubuntu/mysql
+
+//Create and execute
+sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:latest
+
+//Show log mysql container
+sudo docker logs -f [mysql-container-name]
+
+//Create network for connecting with mysql container
+sudo docker network create [mysql-network-name]
+sudo docker network connect [mysql-network-name] [mysql-container-name]
+
+//Connect to mysql bash
+sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:latest mysql -h[mysql-container-name] -uroot -p
+
+//Another way to connect to mysql bash
+sudo docker exec -it [mysql-container-name] bash
+	mysql -u root -p
+
+//Stop mysql container
+sudo docker stop [mysql-container-name]
+
+//Start mysql container
+sudo docker start [mysql-container-name]
+
+//Configure your app properties file
+===> Change localhost to docker ip address
+===> Add mysql username and password
+
+//Configure your Dockerfile
+	FROM openjdk:11
+	EXPOSE 8080
+	ADD target/your_jar_name.jar your_jar_name.jar
+	ENTRYPOINT ["java", "-jar","/your_jar_name.jar"]
+
+//Add jar file name in your pom file balise build
+	<finalName>your_jar_name</finalName>
+	
+//Make jar file
+mvn clean package
+
+//Create docker image
+sudo docker build -t [docker-image-name] .
+
+//Run docker image
+sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --link [mysql-container-name]
+
+//Push an image to docker hub
+//Before create a repo in docker hub
+sudo docker tag local-image:tagname docker-hub-username-username/repo-name:tagname
+sudo docker push docker-hub-username-username/repo-name:tagname
+
+
+
+
+#______________Host many docker container on Docker-compose_____________#
+
+//Exemple of docker compose file
+version: '3.3'
+services:
+  #MYSQL SERVER Config
+  mysql-gescabinet-db:
+    image: ubuntu/mysql
+    restart: always
+    environment:
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '30306:3306'
+    #xpose:
+      # Opens port 30306 on the container
+      - '30306'
+    networks:
+      - monnet  
+  #GesCabinet Backend Config
+  back-gescabinet-container:
+    #Path to your backend project
+    build: ./apigescab	#Docker file must be in this folder
+    ports:
+      - 8000:8080
+    depends_on:
+      - mysql-gescabinet-db
+    networks:
+      - monnet
+
+  #GesCabinet frontend Config
+  front-gescabinet-container:
+    #Path to your frontend project
+    build: ./FrontEnd	#Docker file must be in this folder
+    ports:
+      - 8001:80
+    depends_on:
+      - back-gescabinet-container
+    networks:
+      - monnet
+      
+networks:
+  monnet:
+
+
+//Build and Run docker-copmose
+sudo docker-compose up --build
+
+//Run docker-compose
+sudo docker-compose up
