@@ -28,38 +28,34 @@ sudo docker stop [mysql-container-name]
 ###Start mysql container
 sudo docker start [mysql-container-name]
 
+###Hosting spring boot application on docker
+###First configure your app properties file
+###By changing host : localhost to docker ip address
+### and add mysql container username and password
+###Now add jar file name in your pom file > balise build
+<finalName>your_jar_name</finalName>
 
-```
-
-//Configure your app properties file
-===> Change localhost to docker ip address
-===> Add mysql username and password
-
-//Configure your Dockerfile
-	FROM openjdk:11
-	EXPOSE 8080
-	ADD target/your_jar_name.jar your_jar_name.jar
-	ENTRYPOINT ["java", "-jar","/your_jar_name.jar"]
-
-//Add jar file name in your pom file balise build
-	<finalName>your_jar_name</finalName>
-	
-//Make jar file
+###Make jar file
 mvn clean package
 
-//Create docker image
+###After that, create and configure a Dockerfile like this 👇
+FROM openjdk:11
+EXPOSE 8080
+ADD target/your_jar_name.jar your_jar_name.jar
+ENTRYPOINT ["java", "-jar","/your_jar_name.jar"]
+
+###Create docker image
 sudo docker build -t [docker-image-name] .
 
-//Run docker image
+###Run docker image with mysql container
 sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --link [mysql-container-name]
 
-//Push an image to docker hub
-//Before create a repo in docker hub
+###Now we can push this image on docker hub for sharing
+###First create a repo in docker hub (go to the docker hub website)
+###To push an image in docker hub
 sudo docker tag local-image:tagname docker-hub-username-username/repo-name:tagname
 sudo docker push docker-hub-username-username/repo-name:tagname
-
-
-
+```
 
 #______________Host many docker container on Docker-compose_____________#
 
