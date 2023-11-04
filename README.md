@@ -1,18 +1,21 @@
-# Deployment Docker, Apache Config
+# Docker deployment
 
-## Host spring boot mysql on Docker
+- Deploy spring boot mysql on Docker
+```text
+###Pull mysql from docker hub
+sudo docker pull ubuntu/mysql
 
-### Pull mysql from docker hub : $sudo docker pull ubuntu/mysql
-
-//Create and execute
+###Create and execute mysql container
 sudo docker run --name [mysql-container-name] -e TZ=UTC -p port:3306 -e MYSQL_ROOT_PASSWORD=password ubuntu/mysql:latest
 
-//Show log mysql container
+###Show log of mysql container
 sudo docker logs -f [mysql-container-name]
 
-//Create network for connecting with mysql container
+###Create network for connecting with mysql container
 sudo docker network create [mysql-network-name]
 sudo docker network connect [mysql-network-name] [mysql-container-name]
+
+```
 
 //Connect to mysql bash
 sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:latest mysql -h[mysql-container-name] -uroot -p
