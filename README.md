@@ -104,9 +104,9 @@ networks:
   monnet:
 
 
-//Build and Run docker-copmose
+###Build and Run docker-copmose
 sudo docker-compose up --build
 
-//Run docker-compose
-```
+###Run docker-compose
 sudo docker-compose up
+```
