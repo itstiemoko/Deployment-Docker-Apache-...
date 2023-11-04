@@ -15,20 +15,21 @@ sudo docker logs -f [mysql-container-name]
 sudo docker network create [mysql-network-name]
 sudo docker network connect [mysql-network-name] [mysql-container-name]
 
-```
-
-//Connect to mysql bash
+###Connect to docker mysql bash
 sudo docker run -it --rm --network [mysql-network-name] ubuntu/mysql:latest mysql -h[mysql-container-name] -uroot -p
 
-//Another way to connect to mysql bash
+###Another way to connect to docker mysql bash
 sudo docker exec -it [mysql-container-name] bash
 	mysql -u root -p
 
-//Stop mysql container
+###Stop mysql container
 sudo docker stop [mysql-container-name]
 
-//Start mysql container
+###Start mysql container
 sudo docker start [mysql-container-name]
+
+
+```
 
 //Configure your app properties file
 ===> Change localhost to docker ip address
