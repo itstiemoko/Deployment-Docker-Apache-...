@@ -57,9 +57,10 @@ sudo docker tag local-image:tagname docker-hub-username-username/repo-name:tagna
 sudo docker push docker-hub-username-username/repo-name:tagname
 ```
 
-#______________Host many docker container on Docker-compose_____________#
-
-//Exemple of docker compose file
+- Host many docker container on Docker-compose
+```text
+###Exemple of docker compose file
+#Docker compose version
 version: '3.3'
 services:
   #MYSQL SERVER Config
@@ -107,4 +108,5 @@ networks:
 sudo docker-compose up --build
 
 //Run docker-compose
+```
 sudo docker-compose up
