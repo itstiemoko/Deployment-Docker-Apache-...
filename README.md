@@ -53,8 +53,8 @@ sudo docker run -p port:8080 [docker-image-name] --net [mysql-network-name] --li
 ###Now we can push this image on docker hub for sharing
 ###First create a repo in docker hub (go to the docker hub website)
 ###To push an image in docker hub
-sudo docker tag local-image:tagname docker-hub-username-username/repo-name:tagname
-sudo docker push docker-hub-username-username/repo-name:tagname
+sudo docker tag local-image:tagname docker-hub-username/repo-name:tagname
+sudo docker push docker-hub-username/repo-name:tagname
 ```
 
 - Host many docker container on Docker-compose
